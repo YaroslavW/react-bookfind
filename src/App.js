@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Header from './Components/Header';
+import Books from './Components/Books'
+import {Container, Col, Row} from 'react-bootstrap'
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state={
+      books: [],
+      text: 'Harry Potter'
+    }
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+          <Header />
+          <Container>
+            <Row>
+              <Col xs={12} md={12} lg={12}>
+              <Books />
+              </Col>
+            </Row>
+          </Container>
       </div>
     );
   }
