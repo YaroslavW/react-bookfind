@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Col} from 'react-bootstrap';
+import { Row, Col, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 import Collapsible from 'react-collapsible';
 
 class Books extends Component {
@@ -9,10 +9,40 @@ class Books extends Component {
             bookItems = this.props.books.map(book => {
                 let id = book.id;
                 let title = book.volumeInfo.title;
+                let thumbnail = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/128x212'
+                let categories = book.volumeInfo.categories ? book.volumeInfo.categories : 'Nemo';
+                let authors = book.volumeInfo.authors;
+                let publisher = book.volumeInfo.publisher ? book.volumeInfo.publisher : 'Super-Publisher';
+                let description = book.volumeInfo.description ? book.volumeInfo.description : 'Very Interestig book but not description';
+                let pageCount = book.volumeInfo.pageCount;
+                let publishedDate = book.volumeInfo.publishedDate;
+                let averageRating = book.volumeInfo.averageRating ? book.volumeInfo.averageRating : '0';
+                let buyLink = book.volumeInfo.previewLink;
                 return (
                     <Collapsible key={id} trigger={title}>
-                        <p>This is the collapsible content. It can be any element or React component you like.</p>
-                        <p>It can even be another Collapsible component. Check out the next section!</p>
+                        <Row>
+                            <Col xs={3} md={3} lg={3} className="text-center">
+                                <img src={thumbnail} role="presentation" alt={`Some about-${thumbnail}`}/>
+                            </Col>
+                            <Col xs={8} md={8} lg={8}>
+                                <ListGroup>
+                                    <ListGroupItem><strong>Categories: </strong> {categories}</ListGroupItem>
+                                    <ListGroupItem><strong>Authors: </strong> {authors}</ListGroupItem>
+                                    <ListGroupItem><strong>Publisher: </strong> {publisher}</ListGroupItem>
+                                    <ListGroupItem><strong>Publish Date: </strong> {publishedDate}</ListGroupItem>
+                                    <ListGroupItem><strong>Page Count: </strong> {pageCount}</ListGroupItem>
+                                    <ListGroupItem><strong>Average Rating: </strong> <span className="rating">{averageRating}</span></ListGroupItem>
+                                </ListGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={11} md={11} lg={11}>
+                                <h3>Book Description</h3>
+                                {description}
+                                <hr />
+                                <Button href={buyLink} target="_blank" variant="primary">Buy Now</Button>
+                            </Col>
+                        </Row> 
                     </Collapsible>
                     
                 )
