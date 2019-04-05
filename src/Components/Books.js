@@ -19,13 +19,14 @@ class Books extends Component {
                 let averageRating = book.volumeInfo.averageRating ? book.volumeInfo.averageRating : '0';
                 let buyLink = book.volumeInfo.previewLink;
                 return (
-                    <Collapsible key={id} trigger={title}>
+                    <Collapsible key={id} trigger={title} triggerTagName="div" triggerWhenOpen='^'>
                         <Row>
                             <Col xs={3} md={3} lg={3} className="text-center">
                                 <img src={thumbnail} role="presentation" alt={`Some about-${thumbnail}`}/>
                             </Col>
                             <Col xs={8} md={8} lg={8}>
                                 <ListGroup>
+                                    <ListGroupItem><strong>Title: </strong> {title}</ListGroupItem>
                                     <ListGroupItem><strong>Categories: </strong> {categories}</ListGroupItem>
                                     <ListGroupItem><strong>Authors: </strong> {authors}</ListGroupItem>
                                     <ListGroupItem><strong>Publisher: </strong> {publisher}</ListGroupItem>
