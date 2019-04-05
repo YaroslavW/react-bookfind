@@ -21,10 +21,10 @@ class Books extends Component {
                 return (
                     <Collapsible key={id} trigger={title} triggerTagName="div" triggerWhenOpen='^'>
                         <Row>
-                            <Col xs={3} md={3} lg={3} className="text-center">
-                                <img src={thumbnail} role="presentation" alt={`Some about-${thumbnail}`}/>
+                            <Col xs={12} md={3} lg={3} className="text-center">
+                                <img src={thumbnail} className="img-responsive" role="presentation" alt={`Some about-${thumbnail}`}/>
                             </Col>
-                            <Col xs={8} md={8} lg={8}>
+                            <Col xs={12} md={8} lg={8}>
                                 <ListGroup>
                                     <ListGroupItem><strong>Title: </strong> {title}</ListGroupItem>
                                     <ListGroupItem><strong>Categories: </strong> {categories}</ListGroupItem>
