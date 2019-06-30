@@ -25,7 +25,7 @@ class App extends Component {
     }).then((response)=>{
       this.setState({
         books: response.data.items
-      }, () => {console.log(this.state)});
+      });
     }).catch((error)=>{
       console.log(error)
     })
